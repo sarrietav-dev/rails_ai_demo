@@ -1,0 +1,20 @@
+<% content_for :title, "New chat" %>
+
+<div class="max-w-2xl mx-auto">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">Start a New Chat</h1>
+    <p class="mt-2 text-sm text-gray-600">Choose a model and send your first message to begin.</p>
+  </div>
+
+  <div class="bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <%= render "form", chat: @chat %>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to chats_path, class: "text-sm text-gray-600 hover:text-gray-900" do %>
+      ← Back to chats
+    <% end %>
+  </div>
+</div>

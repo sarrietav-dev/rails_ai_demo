@@ -1,0 +1,18 @@
+<div id="message_<%= message.id %>" class="flex <%= message.role == 'user' ? 'justify-end' : 'justify-start' %>">
+  <div class="max-w-[80%]">
+    <div class="flex items-center mb-1 <%= message.role == 'user' ? 'justify-end' : 'justify-start' %>">
+      <span class="text-xs font-medium <%= message.role == 'user' ? 'text-indigo-600' : 'text-green-600' %>">
+        <%= message.role&.capitalize %>
+      </span>
+      <span class="text-xs text-gray-400 ml-2">
+        <%= message.created_at&.strftime("%I:%M %p") %>
+      </span>
+    </div>
+    <div class="rounded-lg px-4 py-3 <%= message.role == 'user' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-900' %>">
+      <div id="message_<%= message.id %>_content" class="whitespace-pre-wrap text-sm"><%= message.content %></div>
+      <% if message.tool_call? %>
+        <%= render "messages/tool_calls", message: message %>
+      <% end %>
+    </div>
+  </div>
+</div>
