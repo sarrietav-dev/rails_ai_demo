@@ -3,10 +3,9 @@ class Message < ApplicationRecord
   has_many_attached :attachments
   broadcasts_to ->(message) { "chat_#{message.chat_id}" }
 
-  def broadcast_append_chunk(content)
+  def broadcast_append_chunk(chunk_content)
     broadcast_append_to "chat_#{chat_id}",
       target: "message_#{id}_content",
-      partial: "messages/content",
-      locals: { content: content }
+      html: chunk_content
   end
 end

@@ -9,7 +9,10 @@
       </span>
     </div>
     <div class="rounded-lg px-4 py-3 <%= message.role == 'user' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-900' %>">
-      <div id="message_<%= message.id %>_content" class="whitespace-pre-wrap text-sm"><%= message.content %></div>
+      <div id="message_<%= message.id %>_content"
+           class="prose prose-sm max-w-none <%= message.role == 'user' ? 'prose-invert' : '' %>"
+           data-controller="markdown"
+           data-markdown-role-value="<%= message.role %>"><%= message.content %></div>
       <% if message.tool_call? %>
         <%= render "messages/tool_calls", message: message %>
       <% end %>
