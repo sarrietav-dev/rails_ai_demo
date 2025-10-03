@@ -10,7 +10,8 @@
         <div>
           <h1 class="text-2xl font-bold text-gray-900">Chat #<%= @chat.id %></h1>
           <p class="mt-1 text-sm text-gray-500">
-            Using <span class="font-medium text-indigo-600"><%= @chat.model&.name || 'Default Model' %></span>
+            Using
+            <span class="font-medium text-indigo-600"><%= @chat.model&.name || "Default Model" %></span>
           </p>
         </div>
         <%= link_to chats_path, class: "text-sm text-gray-600 hover:text-gray-900" do %>
@@ -18,17 +19,20 @@
         <% end %>
       </div>
     </div>
-
     <!-- Messages Container -->
-    <div id="messages" data-chat-target="messages" class="px-6 py-6 space-y-4 min-h-[400px] max-h-[600px] overflow-y-auto">
+    <div
+      id="messages"
+      data-chat-target="messages"
+      class="px-6 py-6 space-y-4 min-h-[400px] max-h-[600px] overflow-y-auto"
+    >
       <% @chat.messages.where.not(id: nil).each do |message| %>
         <%= render message %>
       <% end %>
     </div>
-
     <!-- Message Form -->
     <div class="border-t border-gray-200 px-6 py-4">
       <%= render "messages/form", chat: @chat, message: @message %>
     </div>
   </div>
 </div>
+
